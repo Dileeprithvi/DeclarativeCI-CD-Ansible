@@ -80,7 +80,7 @@ pipeline {
  }
     stage('Ansible Playbook'){
       steps {
-       ansiblePlaybook credentialsId: 'ans-server', inventory: 'inventory', playbook: 'ansibleplay.yml' --list-tags
+       ansiblePlaybook credentialsId: 'ans-server', inventory: 'inventory', playbook: 'ansibleplay.yml', tags: 'stop_container,delete_container'
         }
       }	  	  
   }
