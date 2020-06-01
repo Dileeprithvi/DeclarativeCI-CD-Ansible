@@ -13,7 +13,7 @@
     ignore_errors: yes
 
   - name: remove current docker image
-    command: docker rmi -f $(docker images | grep dileep95/ansibledeploy)
+    shell: docker rmi -f $(docker images | grep dileep95/ansibledeploy)
     ignore_errors: yes
 
   - debug: msg={{ contents }} 
