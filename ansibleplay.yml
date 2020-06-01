@@ -7,14 +7,20 @@
   - name: stop if we have old docker container
     command: docker stop AnsibleContainer
     ignore_errors: yes
+    tags:
+    - stop_container
 
   - name: remove stopped docker container
     command: docker rm AnsibleContainer
     ignore_errors: yes
+    tags:
+    - delete_container
 
   - name: remove current docker image
     shell: docker rmi -f $(docker images | grep dileep95/ansibledeploy)
     ignore_errors: yes
+    tags:
+    - delete_image
 
   - debug: msg={{ contents }} 
 
