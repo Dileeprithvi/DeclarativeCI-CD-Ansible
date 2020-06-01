@@ -15,7 +15,7 @@
     ignore_errors: yes
    
   - name: test the tag
-    command: echo "{{ lookup('env','DOCKER_TAG') }}"
+    command: echo "{{ lookup('env','DOCKER_TAG') }}" | cut -d'"' -f 2
     register: check
     
   - name: test the tag
