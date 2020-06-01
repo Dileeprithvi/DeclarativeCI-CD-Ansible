@@ -15,7 +15,7 @@
     ignore_errors: yes
    
   - name: test the tag
-    command: echo "{{ lookup('env','DOCKER_TAG') }}"
+    shell: echo "{{ lookup('env','DOCKER_TAG') }}"
     register: check
     
   - name: test the tag
