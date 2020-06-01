@@ -2,7 +2,7 @@
 - hosts: all
   become: true
   vars:
-     contents: "{{ lookup('env','DOCKER_TAG') }}"
+     contents: "{{ lookup('env','DOCKER_TAG') | replace('\n', '')}}"
   tasks:
   - name: stop if we have old docker container
     command: docker stop AnsibleContainer
