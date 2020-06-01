@@ -43,6 +43,11 @@ pipeline {
         }			                      
       }
     }	
+    stage('War rename') {
+	  steps {
+		  	sh 'mv /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/target/*.war /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/target/helloworld.war'
+        }			                      
+      }
     stage('SonarQube_Analysis') {
       steps {
 	    script {
