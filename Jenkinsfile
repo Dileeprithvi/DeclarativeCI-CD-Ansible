@@ -2,6 +2,10 @@ def mvn
 def server = Artifactory.server 'artifactory'
 def rtMaven = Artifactory.newMavenBuild()
 def buildInfo
+def DockerTag() {
+	def tag = sh script: 'git rev-parse HEAD', returnStdout:true
+	return tag
+	}
 pipeline {
   agent { label 'master' }
     tools {
@@ -18,6 +22,7 @@ pipeline {
 }	
   environment {
     SONAR_HOME = "${tool name: 'sonar-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}"
+    DOCKER_TAG = DockerTag()	  
   }  
   stages {
     stage('Artifactory_Configuration') {
@@ -57,14 +62,14 @@ pipeline {
     }
   stage('Build Docker Image'){
     steps{
-      sh 'docker build -t dileep95/ansibledeploy:$BUILD_NUMBER .'
+      sh 'docker build -t dileep95/ansibledeploy:${DOCKER_TAG} .'
     }
   }	  	 
   stage('Docker Container'){
     steps{
       withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'docker_pass', usernameVariable: 'docker_user')]) {
 	  sh 'docker login -u ${docker_user} -p ${docker_pass}'
-      	  sh 'docker push dileep95/ansibledeploy:$BUILD_NUMBER'
+      	  sh 'docker push dileep95/ansibledeploy:${DOCKER_TAG}'
 	  }
     }
  }
