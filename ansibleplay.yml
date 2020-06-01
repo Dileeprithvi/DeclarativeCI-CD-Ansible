@@ -1,6 +1,8 @@
 ---
 - hosts: all
   become: true
+  vars:
+     contents: "{{ lookup('env','DOCKER_TAG') }}"
   tasks:
   - name: stop if we have old docker container
     command: docker stop AnsibleContainer
@@ -13,6 +15,8 @@
   - name: remove current docker image
     command: docker rmi dileep95/ansibledeploy
     ignore_errors: yes
+
+  - debug: msg="the value of foo.txt is {{ contents }}"  
    
   #- name: test the tag
   #  shell: echo "{{ lookup('env','DOCKER_TAG') | replace('"', "")}}"
@@ -22,5 +26,5 @@
   #  debug:
  #     var: check.stdout
 
-  - name: creating docker image
-    command: docker run -d -p 8050:8050 --name AnsibleContainer dileep95/ansibledeploy:"{{ lookup('env','DOCKER_TAG') | replace('"', "")}}"
+ # - name: creating docker image
+   # command: docker run -d -p 8050:8050 --name AnsibleContainer dileep95/ansibledeploy:"{{ lookup('env','DOCKER_TAG') }}"
