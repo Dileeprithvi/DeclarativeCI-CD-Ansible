@@ -55,5 +55,23 @@ pipeline {
         }
       }
     }
+  stage('Build Docker Image'){
+    steps{
+      sh 'docker build -t dileep95/ansibledeploy:$BUILD_NUMBER .'
+    }
+  }	  	 
+  stage('Docker Container'){
+    steps{
+      withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'docker_pass', usernameVariable: 'docker_user')]) {
+	  sh 'docker login -u ${docker_user} -p ${docker_pass}'
+      	  sh 'docker push dileep95/ansibledeploy:$BUILD_NUMBER'
+	  }
+    }
+ }
+    stage('Ansible Playbook'){
+      steps {
+        ansiblePlaybook credentialsId: 'ans-server', inventory: 'inventory', playbook: 'ansibleplay.yml'
+        }
+      }	  	  
   }
 }  
