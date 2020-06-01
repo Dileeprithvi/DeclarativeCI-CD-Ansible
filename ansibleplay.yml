@@ -17,5 +17,6 @@
     ignore_errors: yes
 
   - debug: msg={{ contents }} 
-  - name: replace in sql files
-      shell: sed -i 's/"//' {{ contents }}
+
+  - name: creating docker image
+    command: "docker run -d -p 8050:8050 --name AnsibleContainer dileep95/ansibledeploy: {{ lookup('env','DOCKER_TAG') }}"
