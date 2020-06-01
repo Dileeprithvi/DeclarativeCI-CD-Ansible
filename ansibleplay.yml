@@ -16,8 +16,11 @@
    
   - name: test the tag
     command: echo "{{ lookup('env','DOCKER_TAG') }}"
-    ignore_errors: yes
+    register: check
     
+  - name: test the tag
+    debug:
+    register: check.stdout
 
   - name: creating docker image
     command: docker run -d -p 8050:8050 --name AnsibleContainer dileep95/ansibledeploy:"{{ lookup('env','DOCKER_TAG') }}"
