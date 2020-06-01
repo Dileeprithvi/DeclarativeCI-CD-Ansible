@@ -16,4 +16,4 @@
     command: docker rmi dileep95/ansibledeploy
     ignore_errors: yes
 
-  - debug: msg="the value of foo.txt is {{ contents }}"  
+  - debug: msg={{ contents }} 
