@@ -14,13 +14,13 @@
     command: docker rmi dileep95/ansibledeploy
     ignore_errors: yes
    
-  - name: test the tag
-    shell: echo "{{ lookup('env','DOCKER_TAG') | replace('"', "")}}"
-    register: check
+  #- name: test the tag
+  #  shell: echo "{{ lookup('env','DOCKER_TAG') | replace('"', "")}}"
+  #  register: check
     
-  - name: test the tagssss
-    debug:
-      var: check.stdout
+ # - name: test the tagssss
+  #  debug:
+ #     var: check.stdout
 
   - name: creating docker image
-    command: docker run -d -p 8050:8050 --name AnsibleContainer dileep95/ansibledeploy:"{{ lookup('env','DOCKER_TAG')}}"
+    command: docker run -d -p 8050:8050 --name AnsibleContainer dileep95/ansibledeploy:"{{ lookup('env','DOCKER_TAG') | replace('"', "")}}"
