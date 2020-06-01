@@ -19,4 +19,4 @@
   - debug: msg={{ contents }} 
 
   - name: creating docker image
-    command: "docker run -d -p 8050:8050 --name AnsibleContainer dileep95/ansibledeploy: {{ lookup('env','DOCKER_TAG') }}"
+    command: docker run -d -p 8050:8050 --name AnsibleContainer dileep95/ansibledeploy: {{ contents }}
