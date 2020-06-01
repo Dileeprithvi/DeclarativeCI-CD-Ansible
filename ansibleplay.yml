@@ -13,6 +13,11 @@
   - name: remove current docker image
     command: docker rmi dileep95/ansibledeploy
     ignore_errors: yes
+   
+  - name: test the tag
+    command: echo "{{ lookup('env','DOCKER_TAG') }}"
+    ignore_errors: yes
+    
 
   - name: creating docker image
     command: docker run -d -p 8050:8050 --name AnsibleContainer dileep95/ansibledeploy:"{{ lookup('env','DOCKER_TAG') }}"
