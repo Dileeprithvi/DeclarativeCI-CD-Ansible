@@ -15,7 +15,7 @@
     ignore_errors: yes
    
   - name: test the tag
-    shell: echo "{{ lookup('env','DOCKER_TAG') | replace('"', "") }}"
+    shell: echo "{{ lookup('env','DOCKER_TAG') | replace('"', "")}}"
     register: check
     
   - name: test the tagssss
