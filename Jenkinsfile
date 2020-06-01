@@ -75,7 +75,7 @@ pipeline {
  }
     stage('Ansible Playbook'){
       steps {
-        ansiblePlaybook extras: 'DOCKER_TAG', credentialsId: 'ans-server', inventory: 'inventory', playbook: 'ansibleplay.yml'
+        ansiblePlaybook credentialsId: 'ans-server', inventory: 'inventory', playbook: 'ansibleplay.yml -e TAG_NUMBER=$DOCKER_TAG'
         }
       }	  	  
   }
