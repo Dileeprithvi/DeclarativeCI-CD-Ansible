@@ -17,3 +17,5 @@
     ignore_errors: yes
 
   - debug: msg={{ contents }} 
+  - name: replace in sql files
+      shell: sed -i 's/"//' {{ contents }}
