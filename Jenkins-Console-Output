@@ -1,0 +1,482 @@
+Started by user admin
+Obtained Jenkinsfile from git https://github.com/Dileeprithvi/DeclarativeCI-CD-Ansible.git
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] getArtifactoryServer
+[Pipeline] newMavenBuild
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+No credentials specified
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Dileeprithvi/DeclarativeCI-CD-Ansible.git # timeout=10
+Fetching upstream changes from https://github.com/Dileeprithvi/DeclarativeCI-CD-Ansible.git
+ > git --version # timeout=10
+ > git fetch --tags --progress https://github.com/Dileeprithvi/DeclarativeCI-CD-Ansible.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 88b74e590b9628bbb4e70efc878012702a778490 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 88b74e590b9628bbb4e70efc878012702a778490 # timeout=10
+Commit message: "Update Jenkinsfile"
+ > git rev-list --no-walk 88b74e590b9628bbb4e70efc878012702a778490 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] sh
++ git rev-parse HEAD
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timestamps
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Artifactory_Configuration)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] newBuildInfo
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Execute_Maven)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] artifactoryMavenBuild
+[2020-06-01T07:57:59.235Z] Jenkins Artifactory Plugin version: 3.6.2
+[2020-06-01T07:57:59.236Z] Artifactory integration is enabled
+[2020-06-01T07:57:59.237Z] [Pipeline Jks-Art-Sonar-Ansible] $ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.252.b09-2.el7_8.x86_64/bin/java -classpath /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven/boot/* -Dmaven.home=/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven -Dmaven.conf=/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven/conf "-DbuildInfoConfig.propertiesFile=/var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible@tmp/artifactory/buildInfo1315685343113800255.properties" -DbuildInfoConfig.artifactoryResolutionEnabled=true "-Dm3plugin.lib=/var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible@tmp/artifactory/cache/artifactory-plugin/3.6.2" "-Dclassworlds.conf=/var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible@tmp/artifactory/classworlds4566976777135604141conf" "-Dmaven.multiModuleProjectDirectory=/var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible" org.codehaus.plexus.classworlds.launcher.Launcher -f pom.xml clean install
+[2020-06-01T07:58:01.035Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - Scanning for projects...
+[2020-06-01T07:58:01.363Z] [main] WARNING org.apache.maven.graph.DefaultGraphBuilder - 
+[2020-06-01T07:58:01.363Z] [main] WARNING org.apache.maven.graph.DefaultGraphBuilder - Some problems were encountered while building the effective model for com.example:helloworld:war:1.0.0.54
+[2020-06-01T07:58:01.370Z] [main] WARNING org.apache.maven.graph.DefaultGraphBuilder - 'version' contains an expression but should be a constant. @ com.example:helloworld:1.0.0.${BUILD_NUMBER}, /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/pom.xml, line 13, column 11
+[2020-06-01T07:58:01.370Z] [main] WARNING org.apache.maven.graph.DefaultGraphBuilder - 'build.plugins.plugin.version' for org.jacoco:jacoco-maven-plugin is missing. @ com.example:helloworld:1.0.0.${BUILD_NUMBER}, /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/pom.xml, line 54, column 12
+[2020-06-01T07:58:01.384Z] [main] WARNING org.apache.maven.graph.DefaultGraphBuilder - The expression ${artifactId} is deprecated. Please use ${project.artifactId} instead.
+[2020-06-01T07:58:01.384Z] [main] WARNING org.apache.maven.graph.DefaultGraphBuilder - The expression ${version} is deprecated. Please use ${project.version} instead.
+[2020-06-01T07:58:01.384Z] [main] WARNING org.apache.maven.graph.DefaultGraphBuilder - 
+[2020-06-01T07:58:01.384Z] [main] WARNING org.apache.maven.graph.DefaultGraphBuilder - It is highly recommended to fix these problems because they threaten the stability of your build.
+[2020-06-01T07:58:01.384Z] [main] WARNING org.apache.maven.graph.DefaultGraphBuilder - 
+[2020-06-01T07:58:01.384Z] [main] WARNING org.apache.maven.graph.DefaultGraphBuilder - For this reason, future Maven versions might no longer support building such malformed projects.
+[2020-06-01T07:58:01.384Z] [main] WARNING org.apache.maven.graph.DefaultGraphBuilder - 
+[2020-06-01T07:58:01.435Z] [main] INFO org.jfrog.build.extractor.maven.BuildInfoRecorder - Initializing Artifactory Build-Info Recording
+[2020-06-01T07:58:01.453Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - 
+[2020-06-01T07:58:01.453Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - -----------------------< com.example:helloworld >-----------------------
+[2020-06-01T07:58:01.453Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - Building helloworld 1.0.0.54
+[2020-06-01T07:58:01.453Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - --------------------------------[ war ]---------------------------------
+[2020-06-01T07:58:02.312Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - 
+[2020-06-01T07:58:02.312Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - --- maven-clean-plugin:3.1.0:clean (default-clean) @ helloworld ---
+[2020-06-01T07:58:02.468Z] [main] INFO org.apache.maven.plugins.clean.CleanMojo - Deleting /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/target
+[2020-06-01T07:58:02.507Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - 
+[2020-06-01T07:58:02.507Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - --- jacoco-maven-plugin:0.8.5:prepare-agent (default-prepare-agent) @ helloworld ---
+[2020-06-01T07:58:02.986Z] [main] INFO org.jacoco.maven.AgentMojo - argLine set to "-javaagent:/var/lib/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.8.5/org.jacoco.agent-0.8.5-runtime.jar=destfile=/var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/target/jacoco.exec"
+[2020-06-01T07:58:02.986Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - 
+[2020-06-01T07:58:02.986Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - --- maven-resources-plugin:3.1.0:resources (default-resources) @ helloworld ---
+[2020-06-01T07:58:03.111Z] [main] INFO org.apache.maven.shared.filtering.DefaultMavenResourcesFiltering - Using 'UTF-8' encoding to copy filtered resources.
+[2020-06-01T07:58:03.117Z] [main] INFO org.apache.maven.shared.filtering.DefaultMavenResourcesFiltering - Copying 0 resource
+[2020-06-01T07:58:03.121Z] [main] INFO org.apache.maven.shared.filtering.DefaultMavenResourcesFiltering - Copying 1 resource
+[2020-06-01T07:58:03.128Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - 
+[2020-06-01T07:58:03.128Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - --- maven-compiler-plugin:3.8.1:compile (default-compile) @ helloworld ---
+[2020-06-01T07:58:03.308Z] [main] INFO org.apache.maven.plugin.compiler.CompilerMojo - Changes detected - recompiling the module!
+[2020-06-01T07:58:03.311Z] [main] INFO org.codehaus.plexus.compiler.javac.JavacCompiler - Compiling 2 source files to /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/target/classes
+[2020-06-01T07:58:04.183Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - 
+[2020-06-01T07:58:04.190Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ helloworld ---
+[2020-06-01T07:58:04.197Z] [main] INFO org.apache.maven.shared.filtering.DefaultMavenResourcesFiltering - Using 'UTF-8' encoding to copy filtered resources.
+[2020-06-01T07:58:04.197Z] [main] INFO org.apache.maven.shared.filtering.DefaultMavenResourcesFiltering - skip non existing resourceDirectory /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/src/test/resources
+[2020-06-01T07:58:04.197Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - 
+[2020-06-01T07:58:04.197Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ helloworld ---
+[2020-06-01T07:58:04.205Z] [main] INFO org.apache.maven.plugin.compiler.TestCompilerMojo - Changes detected - recompiling the module!
+[2020-06-01T07:58:04.214Z] [main] INFO org.codehaus.plexus.compiler.javac.JavacCompiler - Compiling 1 source file to /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/target/test-classes
+[2020-06-01T07:58:04.331Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - 
+[2020-06-01T07:58:04.331Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - --- maven-surefire-plugin:2.22.2:test (default-test) @ helloworld ---
+[2020-06-01T07:58:04.683Z] [main] INFO org.apache.maven.plugin.surefire.SurefirePlugin - 
+[2020-06-01T07:58:04.683Z] [main] INFO org.apache.maven.plugin.surefire.SurefirePlugin - -------------------------------------------------------
+[2020-06-01T07:58:04.683Z] [main] INFO org.apache.maven.plugin.surefire.SurefirePlugin -  T E S T S
+[2020-06-01T07:58:04.683Z] [main] INFO org.apache.maven.plugin.surefire.SurefirePlugin - -------------------------------------------------------
+[2020-06-01T07:58:06.682Z] [ThreadedStreamConsumer] INFO org.apache.maven.plugin.surefire.SurefirePlugin - Running com.example.helloworld.HelloworldApplicationTests
+[2020-06-01T07:58:06.891Z] 07:58:06.875 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+[2020-06-01T07:58:06.962Z] 07:58:06.950 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+[2020-06-01T07:58:07.091Z] 07:58:07.066 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.example.helloworld.HelloworldApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+[2020-06-01T07:58:07.139Z] 07:58:07.118 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.helloworld.HelloworldApplicationTests], using SpringBootContextLoader
+[2020-06-01T07:58:07.166Z] 07:58:07.140 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.helloworld.HelloworldApplicationTests]: class path resource [com/example/helloworld/HelloworldApplicationTests-context.xml] does not exist
+[2020-06-01T07:58:07.166Z] 07:58:07.141 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.helloworld.HelloworldApplicationTests]: class path resource [com/example/helloworld/HelloworldApplicationTestsContext.groovy] does not exist
+[2020-06-01T07:58:07.166Z] 07:58:07.141 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.helloworld.HelloworldApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+[2020-06-01T07:58:07.166Z] 07:58:07.142 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.helloworld.HelloworldApplicationTests]: HelloworldApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+[2020-06-01T07:58:07.274Z] 07:58:07.260 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.example.helloworld.HelloworldApplicationTests]
+[2020-06-01T07:58:07.490Z] 07:58:07.485 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/target/classes/com/example/helloworld/HelloworldApplication.class]
+[2020-06-01T07:58:07.503Z] 07:58:07.489 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.helloworld.HelloworldApplication for test class com.example.helloworld.HelloworldApplicationTests
+[2020-06-01T07:58:07.774Z] 07:58:07.767 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.example.helloworld.HelloworldApplicationTests]: using defaults.
+[2020-06-01T07:58:07.775Z] 07:58:07.768 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+[2020-06-01T07:58:07.828Z] 07:58:07.816 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/TransactionDefinition]
+[2020-06-01T07:58:07.828Z] 07:58:07.817 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+[2020-06-01T07:58:07.828Z] 07:58:07.817 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4ced17f3, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@734a149a, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@6ce9771c, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4a9b92c6, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6eed46e9, org.springframework.test.context.event.EventPublishingTestExecutionListener@4d20616a, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6ad6ae45, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@7c4d1c7b, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7893c715, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@36f6d25c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@690df641]
+[2020-06-01T07:58:07.838Z] 07:58:07.830 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@2b9b17ce testClass = HelloworldApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@1d2def55 testClass = HelloworldApplicationTests, locations = '{}', classes = '{class com.example.helloworld.HelloworldApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@b9a77c8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@ae202c6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@2c8c16c0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@514de325], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+[2020-06-01T07:58:07.941Z] 07:58:07.938 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=-1}
+[2020-06-01T07:58:08.462Z] 
+[2020-06-01T07:58:08.462Z]   .   ____          _            __ _ _
+[2020-06-01T07:58:08.462Z]  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+[2020-06-01T07:58:08.462Z] ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+[2020-06-01T07:58:08.462Z]  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+[2020-06-01T07:58:08.462Z]   '  |____| .__|_| |_|_| |_\__, | / / / /
+[2020-06-01T07:58:08.462Z]  =========|_|==============|___/=/_/_/_/
+[2020-06-01T07:58:08.462Z]  :: Spring Boot ::        (v2.2.2.RELEASE)
+[2020-06-01T07:58:08.462Z] 
+[2020-06-01T07:58:08.903Z] 2020-06-01 07:58:08.895  INFO 16592 --- [           main] c.e.h.HelloworldApplicationTests         : Starting HelloworldApplicationTests on instance-1 with PID 16592 (started by jenkins in /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible)
+[2020-06-01T07:58:08.903Z] 2020-06-01 07:58:08.897  INFO 16592 --- [           main] c.e.h.HelloworldApplicationTests         : No active profile set, falling back to default profiles: default
+[2020-06-01T07:58:12.080Z] 2020-06-01 07:58:12.074  INFO 16592 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+[2020-06-01T07:58:12.631Z] 2020-06-01 07:58:12.630  INFO 16592 --- [           main] c.e.h.HelloworldApplicationTests         : Started HelloworldApplicationTests in 4.668 seconds (JVM running for 7.766)
+[2020-06-01T07:58:13.043Z] [ThreadedStreamConsumer] INFO org.apache.maven.plugin.surefire.SurefirePlugin - Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.315 s - in com.example.helloworld.HelloworldApplicationTests
+[2020-06-01T07:58:13.076Z] 2020-06-01 07:58:13.068  INFO 16592 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+[2020-06-01T07:58:13.496Z] [main] INFO org.apache.maven.plugin.surefire.SurefirePlugin - 
+[2020-06-01T07:58:13.496Z] [main] INFO org.apache.maven.plugin.surefire.SurefirePlugin - Results:
+[2020-06-01T07:58:13.496Z] [main] INFO org.apache.maven.plugin.surefire.SurefirePlugin - 
+[2020-06-01T07:58:13.496Z] [main] INFO org.apache.maven.plugin.surefire.SurefirePlugin - Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[2020-06-01T07:58:13.497Z] [main] INFO org.apache.maven.plugin.surefire.SurefirePlugin - 
+[2020-06-01T07:58:13.578Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - 
+[2020-06-01T07:58:13.578Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - --- jacoco-maven-plugin:0.8.5:report (default-report) @ helloworld ---
+[2020-06-01T07:58:13.709Z] [main] INFO org.jacoco.maven.ReportMojo - Loading execution data file /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/target/jacoco.exec
+[2020-06-01T07:58:13.844Z] [main] INFO org.jacoco.maven.ReportMojo - Analyzed bundle 'helloworld' with 2 classes
+[2020-06-01T07:58:13.960Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - 
+[2020-06-01T07:58:13.960Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - --- maven-war-plugin:3.2.3:war (default-war) @ helloworld ---
+[2020-06-01T07:58:14.621Z] [main] INFO org.apache.maven.plugins.war.WarMojo - Packaging webapp
+[2020-06-01T07:58:14.621Z] [main] INFO org.apache.maven.plugins.war.WarMojo - Assembling webapp [helloworld] in [/var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/target/helloworld-1.0.0.54]
+[2020-06-01T07:58:14.636Z] [main] INFO org.apache.maven.plugins.war.WarMojo - Processing war project
+[2020-06-01T07:58:14.748Z] [main] INFO org.apache.maven.plugins.war.WarMojo - Webapp assembled in [135 msecs]
+[2020-06-01T07:58:14.788Z] [main] INFO org.codehaus.plexus.archiver.war.WarArchiver - Building war: /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/target/helloworld-1.0.0.54.war
+[2020-06-01T07:58:15.342Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - 
+[2020-06-01T07:58:15.342Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - --- spring-boot-maven-plugin:2.2.2.RELEASE:repackage (repackage) @ helloworld ---
+[2020-06-01T07:58:16.192Z] [main] INFO org.springframework.boot.maven.RepackageMojo - Replacing main artifact with repackaged archive
+[2020-06-01T07:58:16.192Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - 
+[2020-06-01T07:58:16.192Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - --- maven-install-plugin:2.5.2:install (default-install) @ helloworld ---
+[2020-06-01T07:58:16.276Z] [main] INFO org.codehaus.plexus.PlexusContainer - Installing /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/target/helloworld-1.0.0.54.war to /var/lib/jenkins/.m2/repository/com/example/helloworld/1.0.0.54/helloworld-1.0.0.54.war
+[2020-06-01T07:58:16.293Z] [main] INFO org.codehaus.plexus.PlexusContainer - Installing /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/pom.xml to /var/lib/jenkins/.m2/repository/com/example/helloworld/1.0.0.54/helloworld-1.0.0.54.pom
+[2020-06-01T07:58:17.091Z] [main] INFO org.jfrog.build.extractor.maven.BuildDeploymentHelper - Artifactory Build Info Recorder: Saving Build Info to '/var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/target/build-info.json'
+[2020-06-01T07:58:17.480Z] [pool-2-thread-1] INFO org.jfrog.build.extractor.maven.BuildInfoClientBuilder - [pool-2-thread-1] Deploying artifact: http://104.154.78.159:8081/artifactory/libs-release-local/com/example/helloworld/1.0.0.54/helloworld-1.0.0.54.war
+[2020-06-01T07:58:18.264Z] [pool-2-thread-1] INFO org.jfrog.build.extractor.maven.BuildInfoClientBuilder - [pool-2-thread-1] Deploying artifact: http://104.154.78.159:8081/artifactory/libs-release-local/com/example/helloworld/1.0.0.54/helloworld-1.0.0.54.pom
+[2020-06-01T07:58:18.280Z] [main] INFO org.jfrog.build.extractor.maven.BuildDeploymentHelper - Artifactory Build Info Recorder: publish build info set to false, build info will not be published...
+[2020-06-01T07:58:18.280Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - ------------------------------------------------------------------------
+[2020-06-01T07:58:18.280Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - BUILD SUCCESS
+[2020-06-01T07:58:18.280Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - ------------------------------------------------------------------------
+[2020-06-01T07:58:18.288Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - Total time:  17.287 s
+[2020-06-01T07:58:18.288Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - Finished at: 2020-06-01T07:58:18Z
+[2020-06-01T07:58:18.288Z] [main] INFO org.apache.maven.cli.event.ExecutionEventLogger - ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (War rename)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
+[2020-06-01T07:58:18.785Z] + mv target/helloworld-1.0.0.54.war target/helloworld.war
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube_Analysis)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] withSonarQubeEnv
+[2020-06-01T07:58:19.045Z] Injecting SonarQube environment variables using the configuration: sonar
+[Pipeline] {
+[Pipeline] sh
+[2020-06-01T07:58:19.334Z] + /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar-scanner/bin/sonar-scanner
+[2020-06-01T07:58:19.334Z] INFO: Scanner configuration file: /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar-scanner/conf/sonar-scanner.properties
+[2020-06-01T07:58:19.334Z] INFO: Project root configuration file: /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/sonar-project.properties
+[2020-06-01T07:58:19.586Z] INFO: SonarScanner 4.3.0.2102
+[2020-06-01T07:58:19.586Z] INFO: Java 1.8.0_252 Oracle Corporation (64-bit)
+[2020-06-01T07:58:19.586Z] INFO: Linux 3.10.0-1127.8.2.el7.x86_64 amd64
+[2020-06-01T07:58:19.840Z] INFO: User cache: /var/lib/jenkins/.sonar/cache
+[2020-06-01T07:58:19.840Z] INFO: Scanner configuration file: /var/lib/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonar-scanner/conf/sonar-scanner.properties
+[2020-06-01T07:58:19.840Z] INFO: Project root configuration file: /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/sonar-project.properties
+[2020-06-01T07:58:19.840Z] INFO: Analyzing on SonarQube server 7.9.3
+[2020-06-01T07:58:19.840Z] INFO: Default locale: "en_US", source code encoding: "UTF-8" (analysis is platform dependent)
+[2020-06-01T07:58:20.091Z] WARN: SonarScanner will require Java 11 to run starting in SonarQube 8.x
+[2020-06-01T07:58:20.351Z] INFO: Load global settings
+[2020-06-01T07:58:20.351Z] INFO: Load global settings (done) | time=68ms
+[2020-06-01T07:58:20.351Z] INFO: Server id: BF41A1F2-AXJgUcNe9mVD4qJ5h4rl
+[2020-06-01T07:58:20.351Z] INFO: User cache: /var/lib/jenkins/.sonar/cache
+[2020-06-01T07:58:20.602Z] INFO: Load/download plugins
+[2020-06-01T07:58:20.602Z] INFO: Load plugins index
+[2020-06-01T07:58:20.602Z] INFO: Load plugins index (done) | time=57ms
+[2020-06-01T07:58:20.602Z] INFO: Load/download plugins (done) | time=95ms
+[2020-06-01T07:58:21.541Z] INFO: Process project properties
+[2020-06-01T07:58:21.541Z] INFO: Execute project builders
+[2020-06-01T07:58:21.541Z] INFO: Execute project builders (done) | time=6ms
+[2020-06-01T07:58:21.541Z] INFO: Project key: PipelineJks-Art-Sonar-Ansible
+[2020-06-01T07:58:21.541Z] INFO: Base dir: /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible
+[2020-06-01T07:58:21.541Z] INFO: Working dir: /var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/.scannerwork
+[2020-06-01T07:58:21.541Z] INFO: Load project settings for component key: 'PipelineJks-Art-Sonar-Ansible'
+[2020-06-01T07:58:21.541Z] INFO: Load project settings for component key: 'PipelineJks-Art-Sonar-Ansible' (done) | time=19ms
+[2020-06-01T07:58:21.541Z] INFO: Load quality profiles
+[2020-06-01T07:58:21.541Z] INFO: Load quality profiles (done) | time=65ms
+[2020-06-01T07:58:21.541Z] INFO: Detected Jenkins
+[2020-06-01T07:58:21.541Z] INFO: Load active rules
+[2020-06-01T07:58:24.777Z] INFO: Load active rules (done) | time=3018ms
+[2020-06-01T07:58:24.777Z] INFO: Indexing files...
+[2020-06-01T07:58:24.777Z] INFO: Project configuration:
+[2020-06-01T07:58:25.040Z] INFO: 4 files indexed
+[2020-06-01T07:58:25.040Z] INFO: 0 files ignored because of scm ignore settings
+[2020-06-01T07:58:25.040Z] INFO: Quality profile for java: Sonar way
+[2020-06-01T07:58:25.040Z] INFO: ------------- Run sensors on module PipelineJks-Art-Sonar-Ansible
+[2020-06-01T07:58:25.297Z] INFO: Load metrics repository
+[2020-06-01T07:58:25.297Z] INFO: Load metrics repository (done) | time=67ms
+[2020-06-01T07:58:27.168Z] INFO: Sensor JavaSquidSensor [java]
+[2020-06-01T07:58:27.419Z] INFO: Configured Java source version (sonar.java.source): none
+[2020-06-01T07:58:27.672Z] INFO: JavaClasspath initialization
+[2020-06-01T07:58:27.672Z] WARN: Bytecode of dependencies was not provided for analysis of source files, you might end up with less precise results. Bytecode can be provided using sonar.java.libraries property.
+[2020-06-01T07:58:27.672Z] INFO: JavaClasspath initialization (done) | time=23ms
+[2020-06-01T07:58:27.672Z] INFO: JavaTestClasspath initialization
+[2020-06-01T07:58:27.672Z] WARN: Bytecode of dependencies was not provided for analysis of test files, you might end up with less precise results. Bytecode can be provided using sonar.java.test.libraries property.
+[2020-06-01T07:58:27.672Z] INFO: JavaTestClasspath initialization (done) | time=0ms
+[2020-06-01T07:58:28.230Z] INFO: Java Main Files AST scan
+[2020-06-01T07:58:28.230Z] INFO: 2 source files to be analyzed
+[2020-06-01T07:58:28.230Z] INFO: Load project repositories
+[2020-06-01T07:58:28.230Z] INFO: Load project repositories (done) | time=22ms
+[2020-06-01T07:58:28.787Z] INFO: Java Main Files AST scan (done) | time=690ms
+[2020-06-01T07:58:28.787Z] INFO: Java Test Files AST scan
+[2020-06-01T07:58:28.787Z] INFO: 1 source files to be analyzed
+[2020-06-01T07:58:28.787Z] INFO: 2/2 source files have been analyzed
+[2020-06-01T07:58:28.787Z] INFO: Java Test Files AST scan (done) | time=92ms
+[2020-06-01T07:58:28.787Z] INFO: Sensor JavaSquidSensor [java] (done) | time=1725ms
+[2020-06-01T07:58:28.787Z] INFO: Sensor JaCoCo XML Report Importer [jacoco]
+[2020-06-01T07:58:28.787Z] INFO: 1/1 source files have been analyzed
+[2020-06-01T07:58:29.038Z] INFO: Sensor JaCoCo XML Report Importer [jacoco] (done) | time=34ms
+[2020-06-01T07:58:29.038Z] INFO: Sensor SurefireSensor [java]
+[2020-06-01T07:58:29.038Z] INFO: parsing [/var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/target/surefire-reports]
+[2020-06-01T07:58:29.038Z] INFO: Sensor SurefireSensor [java] (done) | time=56ms
+[2020-06-01T07:58:29.038Z] INFO: Sensor JaCoCoSensor [java]
+[2020-06-01T07:58:29.038Z] INFO: Both 'sonar.jacoco.reportPaths' and 'sonar.coverage.jacoco.xmlReportPaths' were set. 'sonar.jacoco.reportPaths' is deprecated therefore, only 'sonar.coverage.jacoco.xmlReportPaths' will be taken into account.
+[2020-06-01T07:58:29.038Z] INFO: Sensor JaCoCoSensor [java] (done) | time=3ms
+[2020-06-01T07:58:29.038Z] INFO: Sensor JavaXmlSensor [java]
+[2020-06-01T07:58:29.038Z] INFO: Sensor JavaXmlSensor [java] (done) | time=2ms
+[2020-06-01T07:58:29.038Z] INFO: Sensor HTML [web]
+[2020-06-01T07:58:29.038Z] INFO: Sensor HTML [web] (done) | time=17ms
+[2020-06-01T07:58:29.038Z] INFO: ------------- Run sensors on project
+[2020-06-01T07:58:29.038Z] INFO: Sensor Zero Coverage Sensor
+[2020-06-01T07:58:29.038Z] INFO: Sensor Zero Coverage Sensor (done) | time=1ms
+[2020-06-01T07:58:29.038Z] INFO: Sensor Java CPD Block Indexer
+[2020-06-01T07:58:29.038Z] INFO: Sensor Java CPD Block Indexer (done) | time=19ms
+[2020-06-01T07:58:29.038Z] INFO: 2 files had no CPD blocks
+[2020-06-01T07:58:29.038Z] INFO: Calculating CPD for 0 files
+[2020-06-01T07:58:29.038Z] INFO: CPD calculation finished
+[2020-06-01T07:58:29.038Z] INFO: Analysis report generated in 122ms, dir size=75 KB
+[2020-06-01T07:58:29.289Z] INFO: Analysis report compressed in 22ms, zip size=14 KB
+[2020-06-01T07:58:29.289Z] INFO: Analysis report uploaded in 37ms
+[2020-06-01T07:58:29.289Z] INFO: ANALYSIS SUCCESSFUL, you can browse http://104.154.78.159:9000/dashboard?id=PipelineJks-Art-Sonar-Ansible
+[2020-06-01T07:58:29.289Z] INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+[2020-06-01T07:58:29.289Z] INFO: More about the report processing at http://104.154.78.159:9000/api/ce/task?id=AXJu45jS9mVD4qJ5h61b
+[2020-06-01T07:58:29.289Z] INFO: Analysis total time: 8.554 s
+[2020-06-01T07:58:29.289Z] INFO: ------------------------------------------------------------------------
+[2020-06-01T07:58:29.289Z] INFO: EXECUTION SUCCESS
+[2020-06-01T07:58:29.289Z] INFO: ------------------------------------------------------------------------
+[2020-06-01T07:58:29.289Z] INFO: Total time: 9.804s
+[2020-06-01T07:58:29.289Z] INFO: Final Memory: 21M/238M
+[2020-06-01T07:58:29.289Z] INFO: ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Quality_Gate)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] timeout
+[2020-06-01T07:58:29.487Z] Timeout set to expire in 3 min 0 sec
+[Pipeline] {
+[Pipeline] waitForQualityGate
+[2020-06-01T07:58:29.506Z] Checking status of SonarQube task 'AXJu45jS9mVD4qJ5h61b' on server 'sonar'
+[2020-06-01T07:58:29.518Z] SonarQube task 'AXJu45jS9mVD4qJ5h61b' status is 'PENDING'
+[2020-06-01T07:58:32.979Z] SonarQube task 'AXJu45jS9mVD4qJ5h61b' status is 'SUCCESS'
+[2020-06-01T07:58:32.979Z] SonarQube task 'AXJu45jS9mVD4qJ5h61b' completed. Quality gate is 'OK'
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker Image)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
+[2020-06-01T07:58:33.423Z] + docker build -t dileep95/ansibledeploy:88b74e590b9628bbb4e70efc878012702a778490 .
+[2020-06-01T07:58:33.674Z] Sending build context to Docker daemon 44.35 MB
+
+[2020-06-01T07:58:33.674Z] Step 1/4 : FROM tomcat:9-alpine
+[2020-06-01T07:58:33.674Z]  ---> 58d02ef62ed2
+[2020-06-01T07:58:33.674Z] Step 2/4 : ADD target/*.war /usr/local/tomcat/webapps/
+[2020-06-01T07:58:34.586Z]  ---> 3b72db0cd4a5
+[2020-06-01T07:58:34.586Z] Removing intermediate container 5f943f26d426
+[2020-06-01T07:58:34.586Z] Step 3/4 : RUN value=`cat conf/server.xml` && echo "${value//8080/8050}" >| conf/server.xml
+[2020-06-01T07:58:34.586Z]  ---> Running in 9d5d7777bbca
+[2020-06-01T07:58:34.586Z] 
+[2020-06-01T07:58:35.931Z] [91m[0m ---> 182196648a0c
+[2020-06-01T07:58:35.931Z] Removing intermediate container 9d5d7777bbca
+[2020-06-01T07:58:35.931Z] Step 4/4 : CMD catalina.sh run
+[2020-06-01T07:58:35.931Z]  ---> Running in 026deed9261a
+[2020-06-01T07:58:35.931Z]  ---> 714d9dd1ad62
+[2020-06-01T07:58:35.931Z] Removing intermediate container 026deed9261a
+[2020-06-01T07:58:35.931Z] Successfully built 714d9dd1ad62
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Docker Container)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withCredentials
+[2020-06-01T07:58:36.132Z] Masking supported pattern matches of $docker_user or $docker_pass
+[Pipeline] {
+[Pipeline] sh
+[2020-06-01T07:58:36.410Z] + docker login -u **** -p ****
+[2020-06-01T07:58:36.661Z] Login Succeeded
+[Pipeline] sh
+[2020-06-01T07:58:36.931Z] + docker push ****/ansibledeploy:88b74e590b9628bbb4e70efc878012702a778490
+[2020-06-01T07:58:36.931Z] The push refers to a repository [docker.io/****/ansibledeploy]
+[2020-06-01T07:58:36.931Z] d6eadd61a775: Preparing
+[2020-06-01T07:58:36.931Z] 879c85afd5f3: Preparing
+[2020-06-01T07:58:36.931Z] 3997748855d0: Preparing
+[2020-06-01T07:58:36.931Z] 3a55166d29b8: Preparing
+[2020-06-01T07:58:36.931Z] a854dd4eaee0: Preparing
+[2020-06-01T07:58:36.931Z] 3c67124130ec: Preparing
+[2020-06-01T07:58:36.931Z] f8f564cb1419: Preparing
+[2020-06-01T07:58:36.931Z] 638d4576a926: Preparing
+[2020-06-01T07:58:36.931Z] c9b26f41504c: Preparing
+[2020-06-01T07:58:36.931Z] cd7100a72410: Preparing
+[2020-06-01T07:58:36.931Z] 3c67124130ec: Waiting
+[2020-06-01T07:58:36.931Z] f8f564cb1419: Waiting
+[2020-06-01T07:58:36.931Z] 638d4576a926: Waiting
+[2020-06-01T07:58:36.931Z] c9b26f41504c: Waiting
+[2020-06-01T07:58:36.931Z] cd7100a72410: Waiting
+[2020-06-01T07:58:37.482Z] a854dd4eaee0: Layer already exists
+[2020-06-01T07:58:37.482Z] 3a55166d29b8: Layer already exists
+[2020-06-01T07:58:37.482Z] 3997748855d0: Layer already exists
+[2020-06-01T07:58:37.482Z] 3c67124130ec: Layer already exists
+[2020-06-01T07:58:37.482Z] f8f564cb1419: Layer already exists
+[2020-06-01T07:58:37.482Z] 638d4576a926: Layer already exists
+[2020-06-01T07:58:37.732Z] c9b26f41504c: Layer already exists
+[2020-06-01T07:58:37.732Z] cd7100a72410: Layer already exists
+[2020-06-01T07:58:38.644Z] d6eadd61a775: Pushed
+[2020-06-01T07:58:40.506Z] 879c85afd5f3: Pushed
+[2020-06-01T07:58:42.368Z] 88b74e590b9628bbb4e70efc878012702a778490: digest: sha256:a403771be0629d118d4af0e46606e0ed7a9cd50f50deb520ea38ad289651bca0 size: 2414
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Ansible Playbook)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] ansiblePlaybook
+[2020-06-01T07:58:42.573Z] [Pipeline Jks-Art-Sonar-Ansible] $ ansible-playbook ansibleplay.yml -i inventory --private-key "/var/lib/jenkins/workspace/Pipeline Jks-Art-Sonar-Ansible/ssh945038874908166843.key" -u ansadm
+[2020-06-01T07:58:43.160Z] 
+[2020-06-01T07:58:43.160Z] PLAY [all] *********************************************************************
+[2020-06-01T07:58:43.170Z] 
+[2020-06-01T07:58:43.170Z] TASK [Gathering Facts] *********************************************************
+[2020-06-01T07:58:44.987Z] ok: [10.128.0.13]
+[2020-06-01T07:58:45.007Z] 
+[2020-06-01T07:58:45.007Z] TASK [stop if we have old docker container] ************************************
+[2020-06-01T07:58:46.266Z] changed: [10.128.0.13]
+[2020-06-01T07:58:46.286Z] 
+[2020-06-01T07:58:46.286Z] TASK [remove stopped docker container] *****************************************
+[2020-06-01T07:58:46.799Z] changed: [10.128.0.13]
+[2020-06-01T07:58:46.816Z] 
+[2020-06-01T07:58:46.816Z] TASK [remove current docker image] *********************************************
+[2020-06-01T07:58:47.531Z] fatal: [10.128.0.13]: FAILED! => {"changed": true, "cmd": "docker rmi -f $(docker images | grep dileep95/ansibledeploy)", "delta": "0:00:00.258618", "end": "2020-06-01 07:58:47.473641", "msg": "non-zero return code", "rc": 1, "start": "2020-06-01 07:58:47.215023", "stderr": "Error response from daemon: No such image: docker.io/dileep95/ansibledeploy:latest\nError response from daemon: No such image: 88b74e590b9628bbb4e70efc878012702a778490:latest\nError response from daemon: No such image: 2:latest\nError response from daemon: No such image: minutes:latest\nError response from daemon: No such image: ago:latest\nError response from daemon: No such image: 135:latest\nError response from daemon: Error parsing reference: \"MB\" is not a valid repository/tag: repository name must be lowercase", "stderr_lines": ["Error response from daemon: No such image: docker.io/dileep95/ansibledeploy:latest", "Error response from daemon: No such image: 88b74e590b9628bbb4e70efc878012702a778490:latest", "Error response from daemon: No such image: 2:latest", "Error response from daemon: No such image: minutes:latest", "Error response from daemon: No such image: ago:latest", "Error response from daemon: No such image: 135:latest", "Error response from daemon: Error parsing reference: \"MB\" is not a valid repository/tag: repository name must be lowercase"], "stdout": "Untagged: docker.io/dileep95/ansibledeploy:88b74e590b9628bbb4e70efc878012702a778490\nUntagged: docker.io/dileep95/ansibledeploy@sha256:bbb7070d17a4db21800ccc6e281b5b729849154f5bffdbbb80d4e3d457cba440\nDeleted: sha256:eef19c7b32800e4bde9e73cce2518a5d3f4bd71f7c7adfd77a03157d5cb90688\nDeleted: sha256:019b68679f6f31e7ed302ad4f54a221a83604a4bb4b165402e2c217f7d88bd50\nDeleted: sha256:02a0f0194a46598306e5851da929ce760e72bfdecc6cc4502e2581e429234fc4\nDeleted: sha256:84cfee517b8940f774c6cebbded51c9751ed0a2af06865e62a806132ede6d083\nDeleted: sha256:c41d48b0577135031c1e7a91ef9bcc6296d1ac7ab0b70f109712452749b5b2cc\nDeleted: sha256:7f203ff9cd374535f37632d4d13af442d30ce5c0bcf14e924d101026c7f67a77\nDeleted: sha256:bb81808b0ac0afa83193e0b183672af260ec9b6ab3ee4d814cfa8c42c5fc144b\nDeleted: sha256:805a0ebbaf37958e5526477c46d9a34d6d6ecd8e7f15f8af0ab4ddebc192b018\nDeleted: sha256:2eb086ea5fe49c08035fec7f685fefce36e4d3eef2d4ffc36aa873a775d2e524\nDeleted: sha256:d5b019d71f732c377963ed127e66147eee523c543695ae7a87fd4674a9ac69c1\nDeleted: sha256:cd7100a72410606589a54b932cabd804a17f9ae5b42a1882bd56d263e02b6215", "stdout_lines": ["Untagged: docker.io/dileep95/ansibledeploy:88b74e590b9628bbb4e70efc878012702a778490", "Untagged: docker.io/dileep95/ansibledeploy@sha256:bbb7070d17a4db21800ccc6e281b5b729849154f5bffdbbb80d4e3d457cba440", "Deleted: sha256:eef19c7b32800e4bde9e73cce2518a5d3f4bd71f7c7adfd77a03157d5cb90688", "Deleted: sha256:019b68679f6f31e7ed302ad4f54a221a83604a4bb4b165402e2c217f7d88bd50", "Deleted: sha256:02a0f0194a46598306e5851da929ce760e72bfdecc6cc4502e2581e429234fc4", "Deleted: sha256:84cfee517b8940f774c6cebbded51c9751ed0a2af06865e62a806132ede6d083", "Deleted: sha256:c41d48b0577135031c1e7a91ef9bcc6296d1ac7ab0b70f109712452749b5b2cc", "Deleted: sha256:7f203ff9cd374535f37632d4d13af442d30ce5c0bcf14e924d101026c7f67a77", "Deleted: sha256:bb81808b0ac0afa83193e0b183672af260ec9b6ab3ee4d814cfa8c42c5fc144b", "Deleted: sha256:805a0ebbaf37958e5526477c46d9a34d6d6ecd8e7f15f8af0ab4ddebc192b018", "Deleted: sha256:2eb086ea5fe49c08035fec7f685fefce36e4d3eef2d4ffc36aa873a775d2e524", "Deleted: sha256:d5b019d71f732c377963ed127e66147eee523c543695ae7a87fd4674a9ac69c1", "Deleted: sha256:cd7100a72410606589a54b932cabd804a17f9ae5b42a1882bd56d263e02b6215"]}
+[2020-06-01T07:58:47.531Z] ...ignoring
+[2020-06-01T07:58:47.549Z] 
+[2020-06-01T07:58:47.549Z] TASK [debug] *******************************************************************
+[2020-06-01T07:58:47.606Z] ok: [10.128.0.13] => {
+[2020-06-01T07:58:47.606Z]     "msg": "88b74e590b9628bbb4e70efc878012702a778490"
+[2020-06-01T07:58:47.606Z] }
+[2020-06-01T07:58:47.624Z] 
+[2020-06-01T07:58:47.624Z] TASK [creating docker image] ***************************************************
+[2020-06-01T07:58:55.072Z] changed: [10.128.0.13]
+[2020-06-01T07:58:55.073Z] 
+[2020-06-01T07:58:55.073Z] PLAY RECAP *********************************************************************
+[2020-06-01T07:58:55.073Z] 10.128.0.13                : ok=6    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
+[2020-06-01T07:58:55.073Z] 
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // timestamps
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
