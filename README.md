@@ -1,10 +1,10 @@
-Simple Spring Boot Maven Project developed in Jenkins Declarative Pipeline
+# Simple Spring Boot Maven Project developed in Jenkins Declarative Pipeline
 
 DevOps Tools Used
 
 Pipeline CI/CD - GitHub, Maven, Jenkins, Artifactory, SonarQube, Docker, Ansible, Tomcat
 
-Access to the tomcat after successfully deploying:
+# Access to the tomcat after successfully deploying:
 
 Ex: http://awsip:8050/helloworld/hello
 
